@@ -3,7 +3,6 @@
 package sqlfmt
 
 import (
-	"log"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -36,7 +35,7 @@ func (x *sqlLex) Lex(yylval *yySymType) int {
 
 // The parser calls this method on a parse error.
 func (x *sqlLex) Error(s string) {
-	log.Printf("parse error: %s at character %d", s, x.start)
+	// log.Printf("parse error: %s at character %d", s, x.start)
 }
 
 func NewSqlLexer(src string) *sqlLex {

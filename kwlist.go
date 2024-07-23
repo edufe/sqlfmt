@@ -347,6 +347,7 @@ func init() {
 	keywords["storage"] = STORAGE
 	keywords["strict"] = STRICT_P
 	keywords["strip"] = STRIP_P
+	keywords["substr"] = SUBSTRING
 	keywords["substring"] = SUBSTRING
 	keywords["symmetric"] = SYMMETRIC
 	keywords["sysid"] = SYSID

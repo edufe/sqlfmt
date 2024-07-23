@@ -3,20 +3,19 @@ package sqlfmt_test
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
 
-	"github.com/jackc/sqlfmt"
+	"github.com/edufe/sqlfmt"
 )
 
-func TestIntegration(t *testing.T) {
+func TestIntegratosn(t *testing.T) {
 	// TODO - put these notes in testdata input files when sqlfmt handles comments
 	//	{inputFile: "b_expr.sql"}, // b_expr is duplicated subset of a_expr -- test its clauses
 	//	{inputFile: "in.sql"}, // TODO - fix formatting when spacing / new line is improved
 
-	fileInfos, err := ioutil.ReadDir("testdata")
+	fileInfos, err := os.ReadDir("testdata")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -30,13 +29,13 @@ func TestIntegration(t *testing.T) {
 		inputPath := filepath.Join("testdata", fi.Name())
 		goldenPath := filepath.Join("testdata", testName+".golden.sql")
 
-		input, err := ioutil.ReadFile(inputPath)
+		input, err := os.ReadFile(inputPath)
 		if err != nil {
 			t.Errorf("%s: %v", testName, err)
 			continue
 		}
 
-		expected, err := ioutil.ReadFile(goldenPath)
+		expected, err := os.ReadFile(goldenPath)
 		if err != nil {
 			t.Errorf("%s: %v", testName, err)
 			continue
@@ -55,7 +54,7 @@ func TestIntegration(t *testing.T) {
 
 		if outBuf.String() != string(expected) {
 			actualFileName := filepath.Join("tmp", fmt.Sprintf("%s.sql", testName))
-			err = ioutil.WriteFile(actualFileName, outBuf.Bytes(), os.ModePerm)
+			err = os.WriteFile(actualFileName, outBuf.Bytes(), os.ModePerm)
 			if err != nil {
 				t.Fatal(err)
 			}

@@ -4,11 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
+
 	"os"
 	"path/filepath"
 
-	"github.com/jackc/sqlfmt"
+	"github.com/edufe/sqlfmt"
 )
 
 const Version = "0.1.0"
@@ -34,7 +34,7 @@ func (j *job) run() error {
 		}
 	}
 
-	input, err := ioutil.ReadAll(j.r)
+	input, err := io.ReadAll(j.r)
 	if err != nil {
 		return err
 	}
